@@ -11,9 +11,13 @@ int main() {
     printf("%d\n", arr[1]); // 20
 
     *(ptr + 2) = 30; // arr[2] = 30
-    printf("%d\n", arr[2]); // 20
+    printf("%d\n", arr[2]); // 30
 
-    *(ptr + 4) = 40; // warning: array index 4 is past the end of the array (which contains 4 elements) [-Warray-bounds]
+    *(ptr + 3) = 40; // arr[3] = 40
+    printf("%d\n", arr[3]); // 40
+
+    *(ptr + 4) = 50; // warning: array index 4 is past the end of the array (which contains 4 elements) [-Warray-bounds]
+    printf("%d\n", arr[4]); // Wrote 50 to an address outside our array bounds
 
     return 0;
 }
