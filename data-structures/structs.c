@@ -23,16 +23,17 @@ int main(void) {
 }
 
 // passing struct by reference
-void addStudent(struct Student* stdPtr) {
+void addStudent(struct Student* studentPtr) {
+    // arrow character dereferences the struct pointer
     printf("Enter student record\n");
     printf("First name: ");
-    scanf("%s", (*stdPtr).firstname);
+    scanf("%s", studentPtr->firstname);
     printf("Last name: ");
-    scanf("%s", (*stdPtr).lastname);
+    scanf("%s", studentPtr->lastname);
     printf("Year of birth: ");
-    scanf("%d", &(*stdPtr).birthYear);
+    scanf("%d", &studentPtr->birthYear);
     printf("Grade: ");
-    scanf("%lf", &(*stdPtr).grade);
+    scanf("%lf", &studentPtr->grade);
     printf("\n");
 }
 
