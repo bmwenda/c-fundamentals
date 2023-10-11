@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include<stdlib.h>
 
-struct Point {
+typedef struct {
     int x;
     int y;
-};
+} point;
 
-void addPoint(struct Point*);
-void printShape(struct Point*, int);
-void printPoint(struct Point*);
+void addPoint(point*);
+void printShape(point*, int);
+void printPoint(point*);
 
 int main(void) {
     int vertices;
-    struct Point* polygon;
+    point* polygon;
 
     printf("Number of vertices: ");
     scanf("%d", &vertices);
     // dynamically allocate an array of pointers
-    polygon = (struct Point*) malloc(vertices * sizeof(struct Point));
+    polygon = (point*) malloc(vertices * sizeof(point));
     for(int i = 0; i < vertices; i++) {
         addPoint(&polygon[i]);
     }
@@ -29,20 +29,20 @@ int main(void) {
     return 0;
 }
 
-void addPoint(struct Point* point) {
+void addPoint(point* p) {
     printf("Enter co-ordinates\n");
     printf("x: ");
-    scanf("%d", &(point->x));
+    scanf("%d", &(p->x));
     printf("y: ");
-    scanf("%d", &(point->y));
+    scanf("%d", &(p->y));
 }
 
-void printShape(struct Point* polygon, int vertices) {
+void printShape(point* polygon, int vertices) {
     for(int i = 0; i < vertices; i++) {
         printPoint(&polygon[i]);
     }
 }
 
-void printPoint(struct Point* point) {
-    printf("(%d, %d) ", point->x, point->y);
+void printPoint(point* p) {
+    printf("(%d, %d) ", p->x, p->y);
 }

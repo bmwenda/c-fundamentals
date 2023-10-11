@@ -2,21 +2,21 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-struct Node {
+typedef struct node {
     int x;
     int y;
-    struct Node* next;
-};
+    struct node* next;
+} node;
 
-void printNodes(struct Node*);
-struct Node* appendNode(struct Node*, struct Node*);
-struct Node* createNode(int, int);
-void freeMemory(struct Node*);
+void printNodes(node*);
+node* appendNode(node*, node*);
+node* createNode(int, int);
+void freeMemory(node*);
 
 int main(void) {
     int nodesNum;
     int x, y;
-    struct Node* start, * nextNode, * newNode;
+    node* start, * nextNode, * newNode;
 
     // dynamically create nodes
     printf("Number of nodes: ");
@@ -33,36 +33,36 @@ int main(void) {
             start = nextNode = newNode;
         }
         else {
-           appendNode(nextNode, newNode);
+           nextNode = appendNode(nextNode, newNode);
         }
     }
 
     printNodes(start);
 
     // traverse the linked list, freeing each node's memory
-    printf("Freeing memory...");
+    printf("Freeing memory...\n");
     freeMemory(start);
 
     return 0;
 }
 
-struct Node* createNode(int x, int y) {
-    struct Node* node;
-    node = (struct Node*) malloc(sizeof(struct Node));
-    node->x = x;
-    node->y = y;
-    node->next = NULL;
+node* createNode(int x, int y) {
+    node* newNode;
+    newNode = (node*) malloc(sizeof(node));
+    newNode->x = x;
+    newNode->y = y;
+    newNode->next = NULL;
 
-    return node;
+    return newNode;
 }
 
-struct Node* appendNode(struct Node* currentNode, struct Node* nextNode) {
+node* appendNode(node* currentNode, node* nextNode) {
     currentNode->next = nextNode;
     return currentNode->next;
 }
 
-void printNodes(struct Node* start) {
-    struct Node* ptr;
+void printNodes(node* start) {
+    node* ptr;
 
     ptr = start;
 
@@ -72,8 +72,8 @@ void printNodes(struct Node* start) {
     }
 }
 
-void freeMemory(struct Node* currentNode) {
-    struct Node* tmp = currentNode;
+void freeMemory(node* currentNode) {
+    node* tmp = currentNode;
 
     while (tmp != NULL) {
         currentNode = tmp;

@@ -1,19 +1,19 @@
 #include <stdio.h>
 
-struct Student {
+typedef struct {
    char firstname[30];
    char lastname[30];
    int birthYear;
    double grade;
 
-};
+} student;
 
-void printStudent(struct Student);
-void addStudent(struct Student*);
+void printStudent(student);
+void addStudent(student*);
 
 int main(void) {
-    struct Student john;
-    struct Student jane;
+    student john;
+    student jane;
 
     addStudent(&john);
     addStudent(&jane);
@@ -23,7 +23,7 @@ int main(void) {
 }
 
 // passing struct by reference
-void addStudent(struct Student* studentPtr) {
+void addStudent(student* studentPtr) {
     // arrow character dereferences the struct pointer
     printf("Enter student record\n");
     printf("First name: ");
@@ -38,7 +38,7 @@ void addStudent(struct Student* studentPtr) {
 }
 
 // passing struct by value
-void printStudent(struct Student student) {
-    printf("Name: %s %s\nAge: %d\nGrade: %.2lf\n", student.firstname, student.lastname, 2023 - student.birthYear, student.grade);
+void printStudent(student s) {
+    printf("Name: %s %s\nAge: %d\nGrade: %.2lf\n", s.firstname, s.lastname, 2023 - s.birthYear, s.grade);
     printf("\n");
 }
