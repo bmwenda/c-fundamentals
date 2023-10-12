@@ -73,11 +73,12 @@ void printNodes(node* start) {
 }
 
 void freeMemory(node* currentNode) {
-    node* tmp = currentNode;
+    node* ptr = currentNode;
+    node* tmp;
 
-    while (tmp != NULL) {
-        currentNode = tmp;
-        tmp = currentNode->next;
-        free(currentNode);
+    while (ptr != NULL) {
+        tmp = ptr->next;
+        free(ptr);
+        ptr = tmp;
     }
 }
