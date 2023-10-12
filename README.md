@@ -6,3 +6,6 @@ A brief demo of fundamental C concepts like.
 2. Pointers
 3. Pointer arithmetic
 4. Dynamic memory management
+5. Advanced data types
+    - structs
+    - linked lists
